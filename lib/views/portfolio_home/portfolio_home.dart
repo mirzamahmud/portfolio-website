@@ -153,61 +153,66 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
           // ======================================================= screen background =============================================
           ScreenBgWidget(),
           // ======================================================= scrollable section ============================================
-          CustomScrollView(
+          Scrollbar(
+            thickness: 5,
             controller: _scrollController,
-            slivers: [
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  // Home Section
+            trackVisibility: true,
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              physics: const ScrollPhysics(),
+              child: Column(
+                children: [
+                  // =============================================== Home Section ==================================================
                   Section(
                     key: navList[0].navigatorKey,
                     child: HomeSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // About Section
+                  // =============================================== About Section =================================================
                   Section(
                     key: navList[1].navigatorKey,
                     child: AboutSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Experience Section
+                  // ================================================ Experience Section ============================================
                   Section(
                     key: navList[2].navigatorKey,
                     child: ExperienceSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Skills Section
+                  // ================================================= Skills Section ===============================================
                   Section(
                     key: navList[3].navigatorKey,
                     child: SkillsSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Projects Section
+                  // ================================================= Projects Section ==============================================
                   Section(
                     key: navList[4].navigatorKey,
                     child: ProjectsSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Testimonials Section
+                  // ================================================= Testimonials Section =================================================
                   Section(
                     key: navList[5].navigatorKey,
                     child: TestimonialsSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Contact Section
+                  // ================================================= Contact Section =================================================
                   Section(
                     key: navList[6].navigatorKey,
                     child: ContactSection(isDarkMode: _isDarkMode),
                   ),
                   
-                  // Footer
+                  // ================================================= Footer =================================================
                   Footer(isDarkMode: _isDarkMode),
-                ]),
+                ],
               ),
-            ],
-          ),
+            ),
+          )
         ],
       ),
+      // ===================================================== floating action =============================================================
       floatingActionButton: AnimatedOpacity(
         opacity: _scrollController.hasClients && _scrollController.offset > 300 ? 1.0 : 0.0,
         duration: const Duration(milliseconds: 300),
