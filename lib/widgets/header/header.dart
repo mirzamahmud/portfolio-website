@@ -11,31 +11,36 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.symmetric(vertical: 20, horizontal: 40),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          // ================================== left section ====================================
-          Text(
-            title,
-            style: GoogleFonts.pacifico(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: Color(0xff101010)
+      ),
+      child: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(vertical: 20, horizontal: 40),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // ================================== left section ====================================
+            Text(
+              title,
+              style: GoogleFonts.pacifico(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
             ),
-          ),
-          // =================================== nav menu ========================================
-          Row(
-            spacing: 8,
-            children: List.generate(navMenus.length, (index) => navMenus[index]),
-          ),
-          // ==================================== theme change ====================================
-          IconButton(
-            onPressed: onChangeTheme, 
-            icon: FaIcon(FontAwesomeIcons.solidMoon, color: Colors.grey, size: 20)
-          )
-        ],
+            // =================================== nav menu ========================================
+            Row(
+              spacing: 8,
+              children: List.generate(navMenus.length, (index) => navMenus[index]),
+            ),
+            // ==================================== theme change ====================================
+            IconButton(
+              onPressed: onChangeTheme, 
+              icon: FaIcon(FontAwesomeIcons.solidMoon, color: Colors.grey, size: 20)
+            )
+          ],
+        ),
       ),
     );
   }
