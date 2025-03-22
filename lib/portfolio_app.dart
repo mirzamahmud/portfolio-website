@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/views/splash/splash_screen.dart';
+import 'package:portfolio_website/views/web_view/splash/splash_screen.dart';
 
 class PortfolioApp extends StatelessWidget {
   const PortfolioApp({super.key});

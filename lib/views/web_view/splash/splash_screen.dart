@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio_website/views/portfolio_home/portfolio_home.dart';
+import 'package:portfolio_website/views/web_view/portfolio_home/portfolio_home.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
