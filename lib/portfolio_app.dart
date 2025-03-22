@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/views/web_view/splash/splash_screen.dart';
+import 'package:portfolio_website/views/mobile_view/mobile_view_layout.dart';
+import 'package:portfolio_website/views/web_view/web_view_layout.dart';
+import 'package:portfolio_website/widgets/layout/base_layout.dart';
 
 class PortfolioApp extends StatelessWidget {
   const PortfolioApp({super.key});
@@ -33,7 +35,11 @@ class PortfolioApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
       ),
       themeMode: ThemeMode.system,
-      home: const SplashScreen(),
+      home: const BaseLayout(
+        mobileLayout: MobileViewLayout(),
+        tabletLayout: MobileViewLayout(),
+        webLayout: WebViewLayout(),
+      ),
     );
   }
 }

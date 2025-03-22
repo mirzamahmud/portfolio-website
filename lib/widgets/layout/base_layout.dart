@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_website/constants/layout/layout_constant.dart';
 
 class BaseLayout extends StatelessWidget {
+  /// this is for showing mobile layout
   final Widget? mobileLayout;
   final Widget? tabletLayout;
   final Widget? webLayout;
