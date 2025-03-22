@@ -165,7 +165,7 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
                   // =============================================== Home Section ==================================================
                   Section(
                     key: navList[0].navigatorKey,
-                    child: HomeSection(isDarkMode: _isDarkMode),
+                    child: HomeSection(),
                   ),
                   
                   // =============================================== About Section =================================================
