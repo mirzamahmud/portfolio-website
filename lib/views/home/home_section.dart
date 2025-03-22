@@ -14,18 +14,14 @@ class HomeSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isMobile = MediaQuery.of(context).size.width < 768;
     
-    return Column(
-      children: [
-        SizedBox(
-          height: isMobile ? 600 : 700,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40),
-            child: isMobile
-                ? _buildMobileContent(context)
-                : _buildDesktopContent(context),
-          ),
-        ),
-      ],
+    return SizedBox(
+      height: isMobile ? 600 : 700,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 40),
+        child: isMobile
+            ? _buildMobileContent(context)
+            : _buildDesktopContent(context),
+      ),
     );
   }
 
@@ -63,16 +59,16 @@ class HomeSection extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          width: 300,
-          height: 300,
+          width: 400,
+          height: 400,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Theme.of(context).colorScheme.primary.withOpacity(0.2),
-                Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+                Theme.of(context).colorScheme.secondary.withValues(alpha: 0.2),
               ],
             ),
           ),
@@ -88,16 +84,16 @@ class HomeSection extends StatelessWidget {
           },
         ),
         Container(
-          width: 260,
-          height: 260,
+          width: 360,
+          height: 360,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                Theme.of(context).colorScheme.tertiary.withOpacity(0.2),
+                Theme.of(context).colorScheme.secondary.withValues(alpha: 0.2),
+                Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.2),
               ],
             ),
           ),
@@ -113,17 +109,17 @@ class HomeSection extends StatelessWidget {
           },
         ),
         Container(
-          width: 220,
-          height: 220,
+          width: 320,
+          height: 320,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
               width: 2,
             ),
             image: const DecorationImage(
-              image: NetworkImage(
-                'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/placeholder.svg?height=220&width=220',
+              image: AssetImage(
+                'assets/images/me.png',
               ),
               fit: BoxFit.cover,
             ),
@@ -197,7 +193,7 @@ class HomeSection extends StatelessWidget {
               ),
             ],
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
             ),
           ),
           child: const Text(
