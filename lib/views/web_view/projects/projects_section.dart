@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio_website/data/project/project_data.dart';
 import 'package:portfolio_website/models/project/project_model.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
 import 'package:portfolio_website/widgets/section/section_title.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,7 +13,7 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final projects = ProjectData.projects;
+    // final projects = ProjectData.projects;
     
     return Column(
       children: [
@@ -23,25 +22,19 @@ class ProjectsSection extends StatelessWidget {
           subtitle: 'Recent Work',
           
         ),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            return StaggeredGrid.count(
-              crossAxisCount: constraints.maxWidth < 768 
-                  ? 1 
-                  : constraints.maxWidth < 1100 ? 2 : 3,
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              children: projects.asMap().entries.map((entry) {
-                final index = entry.key;
-                final project = entry.value;
-                return StaggeredGridTile.fit(
-                  crossAxisCellCount: 1,
-                  child: _buildProjectCard(context, project, index * 100),
-                );
-              }).toList(),
-            );
-          },
-        ),
+        // StaggeredGrid.count(
+        //       crossAxisCount: 3,
+        //       mainAxisSpacing: 20,
+        //       crossAxisSpacing: 20,
+        //       children: projects.asMap().entries.map((entry) {
+        //         final index = entry.key;
+        //         final project = entry.value;
+        //         return StaggeredGridTile.fit(
+        //           crossAxisCellCount: 1,
+        //           child: _buildProjectCard(context, project, index * 100),
+        //         );
+        //       }).toList(),
+        //     )
       ],
     );
   }
@@ -49,64 +42,62 @@ class ProjectsSection extends StatelessWidget {
   Widget _buildProjectCard(BuildContext context, ProjectModel project, int delay) {
     return Container(
       decoration: BoxDecoration(
-        color: isDarkMode 
-            ? Colors.black.withOpacity(0.3) 
-            : Colors.white.withOpacity(0.7),
+        color: BLACK_COLOR.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: BLACK_COLOR.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
         ],
         border: Border.all(
-          color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+          color: PRIMARY_COLOR,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: Stack(
-              children: [
-                Image.network(
-                  project.imageUrl,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.7),
-                        ],
-                        stops: const [0.7, 1.0],
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 10,
-                  child: Text(
-                    project.title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // ClipRRect(
+          //   borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+          //   child: Stack(
+          //     children: [
+          //       // Image.network(
+          //       //   project.imageUrl,
+          //       //   height: 200,
+          //       //   width: double.infinity,
+          //       //   fit: BoxFit.cover,
+          //       // ),
+          //       Positioned.fill(
+          //         child: Container(
+          //           decoration: BoxDecoration(
+          //             gradient: LinearGradient(
+          //               begin: Alignment.topCenter,
+          //               end: Alignment.bottomCenter,
+          //               colors: [
+          //                 Colors.transparent,
+          //                 Colors.black.withOpacity(0.7),
+          //               ],
+          //               stops: const [0.7, 1.0],
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //       Positioned(
+          //         bottom: 10,
+          //         left: 10,
+          //         child: Text(
+          //           project.title,
+          //           style: const TextStyle(
+          //             fontSize: 18,
+          //             fontWeight: FontWeight.bold,
+          //             color: Colors.white,
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
