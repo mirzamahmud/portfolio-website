@@ -21,7 +21,7 @@ class ProjectsSection extends StatelessWidget {
         SectionTitle(
           title: 'My Projects',
           subtitle: 'Recent Work',
-          isDarkMode: isDarkMode,
+          
         ),
         LayoutBuilder(
           builder: (context, constraints) {

@@ -16,7 +16,6 @@ class TestimonialsSection extends StatelessWidget {
         SectionTitle(
           title: 'Testimonials',
           subtitle: 'What Clients Say',
-          isDarkMode: isDarkMode,
         ),
         LayoutBuilder(
           builder: (context, constraints) {

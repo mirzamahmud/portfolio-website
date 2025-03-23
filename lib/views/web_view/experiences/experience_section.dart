@@ -14,7 +14,7 @@ class ExperienceSection extends StatelessWidget {
         SectionTitle(
           title: 'My Experience',
           subtitle: 'Work Experience',
-          isDarkMode: isDarkMode,
+         
         ),
         LayoutBuilder(
           builder: (context, constraints) {

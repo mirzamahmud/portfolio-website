@@ -16,7 +16,6 @@ class ContactSection extends StatelessWidget {
         SectionTitle(
           title: 'Contact Me',
           subtitle: 'Get In Touch',
-          isDarkMode: isDarkMode,
         ),
         LayoutBuilder(
           builder: (context, constraints) {

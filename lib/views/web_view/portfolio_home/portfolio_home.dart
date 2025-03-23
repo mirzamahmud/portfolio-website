@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/models/home/home_navigation_model.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/about/about_section.dart';
 import 'package:portfolio_website/views/web_view/contact/contact_section.dart';
 import 'package:portfolio_website/views/web_view/experiences/experience_section.dart';
@@ -26,8 +27,6 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
 
   final ScrollController _scrollController = ScrollController();
   int _currentIndex = 0;
-  bool _isDarkMode = false;
-  late AnimationController _themeAnimationController;
 
   final List<HomeNavigationModel> navList = [
     HomeNavigationModel(navigatorTitle: "HOME", navigatorKey: GlobalKey()),
@@ -43,29 +42,12 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
   void initState() {
     super.initState();
     _scrollController.addListener(_updateCurrentIndex);
-    _themeAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 400),
-    );
-    
-    // Schedule this for after the first frame
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Check system theme
-      final brightness = MediaQuery.of(context).platformBrightness;
-      setState(() {
-        _isDarkMode = brightness == Brightness.dark;
-        if (_isDarkMode) {
-          _themeAnimationController.value = 1.0;
-        }
-      });
-    });
   }
 
   @override
   void dispose() {
     _scrollController.removeListener(_updateCurrentIndex);
     _scrollController.dispose();
-    _themeAnimationController.dispose();
     super.dispose();
   }
 
@@ -114,15 +96,14 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = MediaQuery.of(context).size.width < 768;
-    
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 80),
         child: Header(
           title: 'Mirza Mahmud',
-          navMenus: isMobile ? [] : navList.asMap().entries.map((entry) {
+          navMenus: navList.asMap().entries.map((entry) {
             final int index = entry.key;
             final String title = entry.value.navigatorTitle;
 
@@ -133,16 +114,14 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
               buttonStyle: ButtonStyle(
                 foregroundColor: WidgetStatePropertyAll(
                   _currentIndex == index 
-                    ? Theme.of(context).colorScheme.primary 
-                    : Theme.of(context).colorScheme.onSurface
+                    ? PRIMARY_COLOR
+                    : GREY_COLOR
                 ),
                 overlayColor: WidgetStatePropertyAll(
-                  Theme.of(context).colorScheme.primary
+                  PRIMARY_COLOR
                 ),
               ),
-              textStyle: GoogleFonts.nunito(
-                fontWeight: _currentIndex == index ? FontWeight.bold : FontWeight.normal,
-              ),
+              textStyle: AppTextStyle.titleSmall.copyWith(fontWeight: _currentIndex == index ? FontWeight.w600 : FontWeight.w400),
             );
           }).toList(),
           onChangeTheme: (){},
@@ -171,41 +150,41 @@ class _PortfolioHomeState extends State<PortfolioHome> with TickerProviderStateM
                   // =============================================== About Section =================================================
                   Section(
                     key: navList[1].navigatorKey,
-                    child: AboutSection(isDarkMode: _isDarkMode),
+                    child: AboutSection(),
                   ),
                   
                   // ================================================ Experience Section ============================================
                   Section(
                     key: navList[2].navigatorKey,
-                    child: ExperienceSection(isDarkMode: _isDarkMode),
+                    child: ExperienceSection(),
                   ),
                   
                   // ================================================= Skills Section ===============================================
                   Section(
                     key: navList[3].navigatorKey,
-                    child: SkillsSection(isDarkMode: _isDarkMode),
+                    child: SkillsSection(),
                   ),
                   
                   // ================================================= Projects Section ==============================================
                   Section(
                     key: navList[4].navigatorKey,
-                    child: ProjectsSection(isDarkMode: _isDarkMode),
+                    child: ProjectsSection(),
                   ),
                   
                   // ================================================= Testimonials Section =================================================
                   Section(
                     key: navList[5].navigatorKey,
-                    child: TestimonialsSection(isDarkMode: _isDarkMode),
+                    child: TestimonialsSection(),
                   ),
                   
                   // ================================================= Contact Section =================================================
                   Section(
                     key: navList[6].navigatorKey,
-                    child: ContactSection(isDarkMode: _isDarkMode),
+                    child: ContactSection(),
                   ),
                   
                   // ================================================= Footer =================================================
-                  Footer(isDarkMode: _isDarkMode),
+                  Footer(),
                 ],
               ),
             ),

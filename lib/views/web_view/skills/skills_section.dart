@@ -16,12 +16,10 @@ class SkillsSection extends StatelessWidget {
         SectionTitle(
           title: 'My Skills',
           subtitle: 'What I Know',
-          isDarkMode: isDarkMode,
         ),
         const SizedBox(height: 20),
         LayoutBuilder(
           builder: (context, constraints) {
-            final isMobile = constraints.maxWidth < 768;
             return Column(
               children: [
                 _buildSkillCategory(
@@ -34,7 +32,6 @@ class SkillsSection extends StatelessWidget {
                     SkillSModel('Android (Java/Kotlin)', 0.6, Colors.green),
                     SkillSModel('iOS (Swift)', 0.5, Colors.orange),
                   ],
-                  isMobile: isMobile,
                   delay: 100,
                 ),
                 const SizedBox(height: 40),
@@ -48,7 +45,7 @@ class SkillsSection extends StatelessWidget {
                     SkillSModel('Figma', 0.7, Colors.red),
                     SkillSModel('Adobe XD', 0.6, Colors.deepPurple),
                   ],
-                  isMobile: isMobile,
+                  
                   delay: 300,
                 ),
                 const SizedBox(height: 40),
@@ -62,7 +59,7 @@ class SkillsSection extends StatelessWidget {
                     SkillSModel('Git & GitHub', 0.85, Colors.black),
                     SkillSModel('CI/CD', 0.7, Colors.teal),
                   ],
-                  isMobile: isMobile,
+              
                   delay: 500,
                 ),
               ],
@@ -77,7 +74,7 @@ class SkillsSection extends StatelessWidget {
     BuildContext context,
     String title,
     List<SkillSModel> skills, {
-    required bool isMobile,
+    
     required int delay,
   }) {
     return Column(
@@ -122,11 +119,7 @@ class SkillsSection extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
             ),
           ),
-          child: isMobile
-              ? Column(
-                  children: skills.map((skill) => _buildSkillItem(context, skill, delay)).toList(),
-                )
-              : Row(
+          child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(

@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/utils/color/app_colors.dart';
 import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/home/inner_widget/home_social_icons.dart';
@@ -27,22 +26,31 @@ class HomeTextContent extends StatelessWidget {
           style: AppTextStyle.displayMedium.copyWith(color: WHITE_COLOR),
         ).animate().fadeIn(duration: 600.ms, delay: 600.ms).slideY(begin: 0.3, end: 0),
         const SizedBox(height: 10),
-        DefaultTextStyle(
-          style: AppTextStyle.headlineSmall.copyWith(color: GREY_COLOR.withValues(alpha: 0.8)),
-          child: AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                'Mobile App Developer',
-                speed: const Duration(milliseconds: 100),
+        Row(
+          children: [
+            DefaultTextStyle(
+              style: AppTextStyle.headlineSmall.copyWith(color: GREY_COLOR.withValues(alpha: 0.8)),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TypewriterAnimatedText(
+                    'Mobile App Developer',
+                    speed: const Duration(milliseconds: 100),
+                  ),
+                  TypewriterAnimatedText(
+                    'Flutter Developer',
+                    speed: const Duration(milliseconds: 100),
+                  ),
+                ],
+                repeatForever: true,
               ),
-              TypewriterAnimatedText(
-                'Flutter Developer',
-                speed: const Duration(milliseconds: 100),
-              ),
-            ],
-            repeatForever: true,
-          ),
-        ).animate().fadeIn(duration: 600.ms, delay: 900.ms),
+            ).animate().fadeIn(duration: 600.ms, delay: 900.ms),
+            const SizedBox(width: 8),
+            Text(
+              '| PAKIZA SOFTWARE LIMITED',
+              style: AppTextStyle.titleMedium.copyWith(color: SECONDARY_COLOR),
+            )
+          ],
+        ),
         const SizedBox(height: 30),
         Container(
           padding: const EdgeInsets.all(16),
