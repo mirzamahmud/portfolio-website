@@ -9,7 +9,6 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isMobile = MediaQuery.of(context).size.width < 768;
     
     return Column(
       children: [
@@ -18,19 +17,7 @@ class AboutSection extends StatelessWidget {
           subtitle: 'Get to know me',
           isDarkMode: isDarkMode,
         ),
-        isMobile
-            ? _buildMobileContent(context)
-            : _buildDesktopContent(context),
-      ],
-    );
-  }
-
-  Widget _buildMobileContent(BuildContext context) {
-    return Column(
-      children: [
-        _buildProfileImage(context).animate().fadeIn(duration: 800.ms),
-        const SizedBox(height: 30),
-        _buildAboutContent(context),
+        _buildDesktopContent(context),
       ],
     );
   }
