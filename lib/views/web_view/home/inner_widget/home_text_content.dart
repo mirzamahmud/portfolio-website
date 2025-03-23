@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/home/inner_widget/home_social_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,68 +19,50 @@ class HomeTextContent extends StatelessWidget {
       children: [
         Text(
           "Hello, I'm",
-          style: GoogleFonts.poppins(
-            fontSize: 24,
-            color: Theme.of(context).colorScheme.primary,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyle.headlineLarge.copyWith(color: PRIMARY_COLOR),
         ).animate().fadeIn(duration: 600.ms, delay: 300.ms).slideY(begin: 0.3, end: 0),
         const SizedBox(height: 10),
         Text(
           "Mirza Mahmud Hossan",
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyle.displayMedium.copyWith(color: WHITE_COLOR),
         ).animate().fadeIn(duration: 600.ms, delay: 600.ms).slideY(begin: 0.3, end: 0),
         const SizedBox(height: 10),
-        SizedBox(
-          height: 50,
-          child: DefaultTextStyle(
-            style: GoogleFonts.poppins(
-              fontSize: 24,
-              color: Colors.grey.withValues(alpha: 0.6),
-              fontWeight: FontWeight.w500,
-            ),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                TypewriterAnimatedText(
-                  'Mobile App Developer',
-                  speed: const Duration(milliseconds: 100),
-                ),
-                TypewriterAnimatedText(
-                  'Flutter Developer',
-                  speed: const Duration(milliseconds: 100),
-                ),
-              ],
-              repeatForever: true,
-            ),
+        DefaultTextStyle(
+          style: AppTextStyle.headlineSmall.copyWith(color: GREY_COLOR.withValues(alpha: 0.8)),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Mobile App Developer',
+                speed: const Duration(milliseconds: 100),
+              ),
+              TypewriterAnimatedText(
+                'Flutter Developer',
+                speed: const Duration(milliseconds: 100),
+              ),
+            ],
+            repeatForever: true,
           ),
         ).animate().fadeIn(duration: 600.ms, delay: 900.ms),
         const SizedBox(height: 30),
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.3),
+            color: BLACK_COLOR.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
+                color: BLACK_COLOR.withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 5),
               ),
             ],
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+              color: PRIMARY_COLOR.withValues(alpha: 0.2),
             ),
           ),
           child: Text(
             "A passionate mobile app developer creating beautiful, functional digital experiences, and high-quality mobile applications with a focus on user experience and performance.",
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              color: Colors.white
-            ),
+            style: AppTextStyle.titleMedium.copyWith(color: WHITE_COLOR),
           ),
         ).animate().fadeIn(duration: 600.ms, delay: 1200.ms).slideY(begin: 0.3, end: 0),
         const SizedBox(height: 30),
@@ -92,16 +76,16 @@ class HomeTextContent extends StatelessWidget {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.primary,
+                backgroundColor: PRIMARY_COLOR,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
                 ),
                 elevation: 5,
-                shadowColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
+                shadowColor: PRIMARY_COLOR.withValues(alpha: 0.5),
               ),
-              child: const Text('Contact Me'),
+              child: Text('Contact Me', style: AppTextStyle.bodyMedium.copyWith(color: WHITE_COLOR)),
             ).animate().fadeIn(duration: 600.ms, delay: 1500.ms).slideX(begin: -0.3, end: 0),
             const SizedBox(width: 16),
             OutlinedButton(
@@ -117,11 +101,11 @@ class HomeTextContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 side: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: PRIMARY_COLOR,
                   width: 2,
                 ),
               ),
-              child: const Text('My Resume'),
+              child: Text('My Resume', style: AppTextStyle.bodyMedium.copyWith(color: WHITE_COLOR)),
             ).animate().fadeIn(duration: 600.ms, delay: 1800.ms).slideX(begin: 0.3, end: 0),
           ],
         ),

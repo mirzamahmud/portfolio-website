@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/portfolio_home/portfolio_home.dart';
 import 'package:lottie/lottie.dart';
 
@@ -21,7 +23,7 @@ class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProv
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 3),
-    )..forward();
+    )..repeat();
     
     // ======================================== navigate to next page ============================
     Timer(const Duration(seconds: 4), (){
@@ -51,7 +53,7 @@ class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: SCREEN_BG_COLOR,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -65,19 +67,12 @@ class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProv
             const SizedBox(height: 30),
             Text(
               "Mirza Mahmud Hossan",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              style: AppTextStyle.headlineSmall.copyWith(color: PRIMARY_COLOR),
             ).animate().fadeIn(duration: 600.ms, delay: 300.ms).slideY(begin: 0.3, end: 0),
             const SizedBox(height: 10),
             Text(
               "Mobile App Developer",
-              style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).colorScheme.onBackground.withOpacity(0.7),
-              ),
+              style: AppTextStyle.titleMedium.copyWith(color: GREY_COLOR),
             ).animate().fadeIn(duration: 600.ms, delay: 600.ms).slideY(begin: 0.3, end: 0),
           ],
         ),
