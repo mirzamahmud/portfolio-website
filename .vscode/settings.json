@@ -1,6 +1,7 @@
 {
-    "editor.defaultFormatter": "Dart-Code.flutter",
-    "editor.formatOnSave": true,
-    "notebook.defaultFormatter": "Dart-Code.flutter",
-    "notebook.formatOnSave.enabled": true
+  "editor.defaultFormatter": "Dart-Code.flutter",
+  "editor.formatOnSave": true,
+  "notebook.defaultFormatter": "Dart-Code.flutter",
+  "notebook.formatOnSave.enabled": true,
+  "dart.flutterSdkPath": ".fvm/versions/3.29.0"
 }
