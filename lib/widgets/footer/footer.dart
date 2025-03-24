@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/utils/style/app_text_style.dart';
 
 class Footer extends StatelessWidget {
   final bool isDarkMode;
-  
+
   const Footer({super.key, this.isDarkMode = false});
 
   @override
@@ -10,32 +12,19 @@ class Footer extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24),
-      decoration: BoxDecoration(
-        color: isDarkMode 
-            ? Colors.black
-            : Colors.white,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(50),
-          topRight: Radius.circular(50),
-        ),
-      ),
+      decoration: BoxDecoration(color: BLACK_COLOR),
       child: Column(
         children: [
-          const Text(
-            "© 2023 Mirza Mahmud Hossan. All Rights Reserved.",
-            style: TextStyle(
-              fontSize: 14,
-            ),
+          Text(
+            "© 2022 Mirza Mahmud Hossan. All Rights Reserved.",
+            style: AppTextStyle.bodyMedium.copyWith(color: WHITE_COLOR),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text('Privacy Policy'),
-              ),
+              TextButton(onPressed: () {}, child: const Text('Privacy Policy')),
               const Text('•'),
               TextButton(
                 onPressed: () {},
