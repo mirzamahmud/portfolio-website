@@ -131,29 +131,29 @@ class WebLayoutView extends GetView<MainLayoutController> {
         ],
       ),
       // ===================================================== floating action =============================================================
-      floatingActionButton: AnimatedOpacity(
-        opacity:
-            controller.scrollController.hasClients &&
-                    controller.scrollController.offset > 300
-                ? 1.0
-                : 0.0,
-        duration: const Duration(milliseconds: 300),
-        child: FloatingActionButton(
-              onPressed:
-                  () => controller.scrollController.animateTo(
-                    0,
-                    duration: const Duration(milliseconds: 800),
-                    curve: Curves.easeInOutCubic,
-                  ),
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              foregroundColor: Colors.white,
-              child: const Icon(Icons.arrow_upward),
-            )
-            .animate(onPlay: (controller) => controller.repeat())
-            .shimmer(
-              delay: Duration(seconds: 3),
-              duration: Duration(seconds: 2),
-            ),
+      floatingActionButton: Obx(
+        () => Visibility(
+          visible: controller.isVisible.value,
+          child: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                onPressed:
+                    () => controller.scrollController.animateTo(
+                      0,
+                      duration: const Duration(milliseconds: 800),
+                      curve: Curves.easeInOutCubic,
+                    ),
+                backgroundColor: PRIMARY_COLOR,
+                foregroundColor: WHITE_COLOR,
+                child: const Icon(Icons.arrow_upward),
+              )
+              .animate(onPlay: (controller) => controller.repeat())
+              .shimmer(
+                delay: const Duration(seconds: 3),
+                duration: const Duration(seconds: 2),
+              ),
+        ),
       ),
     );
   }
