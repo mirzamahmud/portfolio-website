@@ -6,6 +6,7 @@ class MainLayoutController extends GetxController
     with GetTickerProviderStateMixin {
   late ScrollController scrollController;
   Rx<int> currentIndex = 0.obs;
+  Rx<bool> isVisible = false.obs;
 
   final List<HomeNavigationModel> navList = [
     HomeNavigationModel(navigatorTitle: "HOME", navigatorKey: GlobalKey()),
@@ -70,10 +71,20 @@ class MainLayoutController extends GetxController
     );
   }
 
+  void scrollListener() {
+    if (scrollController.hasClients) {
+      final showButton = scrollController.offset > 300;
+      if (showButton != isVisible.value) {
+        isVisible.value = showButton;
+      }
+    }
+  }
+
   @override
   void onInit() {
     scrollController = ScrollController();
     scrollController.addListener(updateCurrentIndex);
+    scrollController.addListener(scrollListener);
     super.onInit();
   }
 
