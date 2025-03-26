@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio_website/utils/color/app_colors.dart';
 import 'package:portfolio_website/utils/style/app_text_style.dart';
-import 'package:portfolio_website/views/web_view/portfolio_home/portfolio_home.dart';
 import 'package:lottie/lottie.dart';
+import 'package:portfolio_website/views/web_view/web_layout_view.dart';
 
 class WebSplashScreen extends StatefulWidget {
   const WebSplashScreen({super.key});
@@ -14,9 +14,10 @@ class WebSplashScreen extends StatefulWidget {
   State<WebSplashScreen> createState() => _WebSplashScreenState();
 }
 
-class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProviderStateMixin {
+class _WebSplashScreenState extends State<WebSplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  
+
   @override
   void initState() {
     super.initState();
@@ -24,13 +25,15 @@ class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProv
       vsync: this,
       duration: const Duration(seconds: 3),
     )..repeat();
-    
+
     // ======================================== navigate to next page ============================
-    Timer(const Duration(seconds: 4), (){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const PortfolioHome()));
+    Timer(const Duration(seconds: 4), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const WebLayoutView()),
+      );
     });
   }
-  
+
   @override
   void dispose() {
     _controller.dispose();
@@ -53,14 +56,22 @@ class _WebSplashScreenState extends State<WebSplashScreen> with SingleTickerProv
             ),
             const SizedBox(height: 30),
             Text(
-              "Mirza Mahmud Hossan",
-              style: AppTextStyle.headlineSmall.copyWith(color: PRIMARY_COLOR),
-            ).animate().fadeIn(duration: 600.ms, delay: 300.ms).slideY(begin: 0.3, end: 0),
+                  "Mirza Mahmud Hossan",
+                  style: AppTextStyle.headlineSmall.copyWith(
+                    color: PRIMARY_COLOR,
+                  ),
+                )
+                .animate()
+                .fadeIn(duration: 600.ms, delay: 300.ms)
+                .slideY(begin: 0.3, end: 0),
             const SizedBox(height: 10),
             Text(
-              "Mobile App Developer",
-              style: AppTextStyle.titleMedium.copyWith(color: GREY_COLOR),
-            ).animate().fadeIn(duration: 600.ms, delay: 600.ms).slideY(begin: 0.3, end: 0),
+                  "Mobile App Developer",
+                  style: AppTextStyle.titleMedium.copyWith(color: GREY_COLOR),
+                )
+                .animate()
+                .fadeIn(duration: 600.ms, delay: 600.ms)
+                .slideY(begin: 0.3, end: 0),
           ],
         ),
       ),
