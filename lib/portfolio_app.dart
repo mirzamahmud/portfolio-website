@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/views/mobile_view/mobile_view_layout.dart';
-import 'package:portfolio_website/views/web_view/web_splash/web_splash_screen.dart';
-import 'package:portfolio_website/widgets/layout/base_layout.dart';
+import 'package:get/get.dart';
+import 'package:portfolio_website/routes/app_page.dart';
+import 'package:portfolio_website/routes/app_route.dart';
+import 'package:portfolio_website/views/main_layout/binding/main_layout_binding.dart';
 
 class PortfolioApp extends StatelessWidget {
   const PortfolioApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Mirza Mahmud - Portfolio',
       debugShowCheckedModeBanner: false,
-      home: const BaseLayout(
-        mobileLayout: MobileViewLayout(),
-        tabletLayout: MobileViewLayout(),
-        webLayout: WebSplashScreen(),
-      ),
+      initialRoute: AppPage.mainLayout,
+      initialBinding: MainLayoutBinding(),
+      defaultTransition: Transition.noTransition,
+      getPages: AppRoute.route,
     );
   }
 }
