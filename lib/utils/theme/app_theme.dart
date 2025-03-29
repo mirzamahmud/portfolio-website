@@ -33,5 +33,44 @@ class AppTheme {
       labelMedium: AppTextStyle.labelMedium,
       labelSmall: AppTextStyle.labelSmall,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: AppTextStyle.labelLarge.copyWith(
+        color: GREY_COLOR,
+        fontWeight: FontWeight.w400,
+      ),
+      filled: true,
+      fillColor: Colors.transparent,
+      contentPadding: EdgeInsetsDirectional.symmetric(
+        vertical: 12,
+        horizontal: 12,
+      ),
+      prefixIconColor: GREY_COLOR,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: GREY_COLOR, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: PRIMARY_COLOR, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: GREY_COLOR, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: SECONDARY_COLOR, width: 1),
+      ),
+    ),
+    iconTheme: IconThemeData(size: 20),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: PRIMARY_COLOR,
+        foregroundColor: WHITE_COLOR,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        alignment: Alignment.center,
+        textStyle: AppTextStyle.bodyMedium,
+      ),
+    ),
   );
 }
