@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_website/models/home/home_navigation_model.dart';
+import 'package:portfolio_website/views/web_view/contact/controller/contact_section_controller.dart';
 
 class MainLayoutController extends GetxController
     with GetTickerProviderStateMixin {
@@ -80,11 +81,17 @@ class MainLayoutController extends GetxController
     }
   }
 
+  Future<void> initializeAllRequiredController() async {
+    Get.put(ContactSectionController());
+  }
+
   @override
-  void onInit() {
+  void onInit() async {
     scrollController = ScrollController();
     scrollController.addListener(updateCurrentIndex);
     scrollController.addListener(scrollListener);
+
+    await initializeAllRequiredController();
     super.onInit();
   }
 
