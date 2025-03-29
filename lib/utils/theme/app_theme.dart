@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/utils/style/app_text_style.dart';
 
 class AppTheme {
-
-  // ========================================================== light theme ===============================================
-  static ThemeData lightTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFF6C63FF),
-      brightness: Brightness.light,
-      primary: const Color(0xFF6C63FF),
-      secondary: const Color(0xFFFF6584),
-      tertiary: const Color(0xFF43CBFF),
-    ),
-    useMaterial3: true,
-    textTheme: GoogleFonts.poppinsTextTheme(),
-  );
-
   // ========================================================== dark theme ===============================================
   static ThemeData darkTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFF6C63FF),
-      brightness: Brightness.dark,
-      primary: const Color(0xFF6C63FF),
-      secondary: const Color(0xFFFF6584),
-      tertiary: const Color(0xFF43CBFF),
-    ),
     useMaterial3: true,
-    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: SCREEN_BG_COLOR,
+    primaryColor: PRIMARY_COLOR,
+    colorScheme: ColorScheme.dark(
+      brightness: Brightness.dark,
+      primary: PRIMARY_COLOR,
+      secondary: SECONDARY_COLOR,
+      error: SECONDARY_COLOR,
+      surface: SCREEN_BG_COLOR,
+    ),
+    textTheme: TextTheme(
+      displayLarge: AppTextStyle.displayLarge,
+      displayMedium: AppTextStyle.displayMedium,
+      displaySmall: AppTextStyle.displaySmall,
+      headlineLarge: AppTextStyle.headlineLarge,
+      headlineMedium: AppTextStyle.headlineMedium,
+      headlineSmall: AppTextStyle.headlineSmall,
+      titleLarge: AppTextStyle.titleLarge,
+      titleMedium: AppTextStyle.titleMedium,
+      titleSmall: AppTextStyle.titleSmall,
+      bodyLarge: AppTextStyle.bodyLarge,
+      bodyMedium: AppTextStyle.bodyMedium,
+      bodySmall: AppTextStyle.bodySmall,
+      labelLarge: AppTextStyle.labelLarge,
+      labelMedium: AppTextStyle.labelMedium,
+      labelSmall: AppTextStyle.labelSmall,
+    ),
   );
 }
