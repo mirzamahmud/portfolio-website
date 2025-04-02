@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:get/get.dart';
 import 'package:portfolio_website/models/testimonial/testimonial_model.dart';
 
 class TestimonialCard extends StatelessWidget {
   final TestimonialModel testimonial;
   final int delay;
-  final bool isActive;
 
   const TestimonialCard({
     required this.testimonial,
     required this.delay,
-    required this.isActive,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-          margin: EdgeInsetsDirectional.only(top: 20, end: 12),
+          width: Get.width * 0.3,
+          margin: EdgeInsetsDirectional.only(top: 20, end: 12, bottom: 20),
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(16),
-            boxShadow:
-                isActive
-                    ? []
-                    : [
-                      BoxShadow(
-                        color: Theme.of(
-                          context,
-                        ).cardColor.withValues(alpha: 0.05),
-                        blurRadius: 10,
-                        offset: const Offset(0, 5),
-                      ),
-                    ],
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).cardColor.withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 5),
+              ),
+            ],
             border: Border.all(
               color: Theme.of(
                 context,
