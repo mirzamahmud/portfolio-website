@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio_website/data/testimonial/testimonial_data.dart';
-import 'package:portfolio_website/models/testimonial/testimonial_model.dart';
+import 'package:get/get.dart';
+import 'package:portfolio_website/constants/extensions/app_spacing_extension.dart';
+import 'package:portfolio_website/utils/color/app_colors.dart';
+import 'package:portfolio_website/views/web_view/about/testimonial_card.dart';
+import 'package:portfolio_website/views/web_view/testimonial/controller/testimonial_section_controller.dart';
 import 'package:portfolio_website/widgets/section/section_title.dart';
 
-class TestimonialsSection extends StatelessWidget {
+class TestimonialsSection extends GetView<TestimonialSectionController> {
   final bool isDarkMode;
 
   const TestimonialsSection({super.key, this.isDarkMode = false});
@@ -12,124 +14,63 @@ class TestimonialsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SectionTitle(title: 'Testimonials', subtitle: 'What Clients Say'),
-        _buildDesktopTestimonials(context),
-      ],
-    );
-  }
-
-  Widget _buildDesktopTestimonials(BuildContext context) {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 20,
-      children:
-          TestimonialData.testimonials.asMap().entries.map((entry) {
-            final index = entry.key;
-            final testimonial = entry.value;
-            return SizedBox(
-              width:
-                  (MediaQuery.of(context).size.width < 1100)
-                      ? (MediaQuery.of(context).size.width - 100) / 2
-                      : (MediaQuery.of(context).size.width - 140) / 3,
-              child: _buildTestimonialCard(context, testimonial, index * 200),
-            );
-          }).toList(),
-    );
-  }
-
-  Widget _buildTestimonialCard(
-    BuildContext context,
-    TestimonialModel testimonial,
-    int delay,
-  ) {
-    return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color:
-                isDarkMode
-                    ? Colors.black.withOpacity(0.3)
-                    : Colors.white.withOpacity(0.7),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 5),
-              ),
-            ],
-            border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+        Obx(
+          () => SizedBox(
+            height: 280,
+            child: PageView.builder(
+              controller: controller.pageController,
+              itemCount: controller.data.value.length,
+              onPageChanged: (value) {},
+              itemBuilder: (context, index) {
+                bool isActive = index == controller.currentPage.value;
+                return TestimonialCard(
+                  testimonial: controller.data.value[index],
+                  delay: controller.currentPage.value * 200,
+                  isActive: isActive,
+                );
+              },
             ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: List.generate(
-                  5,
-                  (index) => Icon(
-                    index < testimonial.rating ? Icons.star : Icons.star_border,
-                    color: Colors.amber,
-                    size: 20,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                '"${testimonial.content}"',
-                style: const TextStyle(
-                  fontSize: 16,
-                  height: 1.6,
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.primary,
-                        width: 2,
-                      ),
-                      image: DecorationImage(
-                        image: NetworkImage(testimonial.avatarUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        testimonial.name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+        ),
+        20.verticalSpace,
+        Obx(
+          () => Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:
+                controller.data.value.asMap().entries.map((entry) {
+                  return controller.currentPage.value == entry.key
+                      ? Container(
+                        width: 12,
+                        height: 6,
+                        margin: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 4.0,
                         ),
-                      ),
-                      Text(
-                        testimonial.position,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Theme.of(context).colorScheme.primary,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: PRIMARY_COLOR,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                      )
+                      : Container(
+                        width: 12,
+                        height: 6,
+                        margin: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: GREY_COLOR, width: 1),
+                        ),
+                      );
+                }).toList(),
           ),
-        )
-        .animate()
-        .fadeIn(duration: 800.ms, delay: Duration(milliseconds: delay))
-        .slideY(begin: 0.2, end: 0);
+        ),
+      ],
+    );
   }
 }

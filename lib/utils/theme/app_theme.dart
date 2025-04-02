@@ -8,6 +8,7 @@ class AppTheme {
     useMaterial3: true,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: SCREEN_BG_COLOR,
+    cardColor: BLACK_COLOR,
     primaryColor: PRIMARY_COLOR,
     colorScheme: ColorScheme.dark(
       brightness: Brightness.dark,
