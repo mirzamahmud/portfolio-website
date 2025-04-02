@@ -4,7 +4,6 @@ class ProjectModel {
   final String imageUrl;
   final List<String> technologies;
   final String? liveUrl;
-  final String? githubUrl;
 
   ProjectModel({
     required this.title,
@@ -12,6 +11,5 @@ class ProjectModel {
     required this.imageUrl,
     required this.technologies,
     this.liveUrl,
-    this.githubUrl,
   });
 }
