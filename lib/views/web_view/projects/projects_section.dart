@@ -20,7 +20,6 @@ class ProjectsSection extends StatelessWidget {
         SectionTitle(
           title: 'My Projects',
           subtitle: 'Recent Work',
-          
         ),
         // StaggeredGrid.count(
         //       crossAxisCount: 3,

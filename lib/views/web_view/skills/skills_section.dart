@@ -6,9 +6,8 @@ import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/widgets/section/section_title.dart';
 
 class SkillsSection extends StatelessWidget {
-  final bool isDarkMode;
 
-  const SkillsSection({super.key, this.isDarkMode = false});
+  const SkillsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
