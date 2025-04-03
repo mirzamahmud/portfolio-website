@@ -14,7 +14,6 @@ class ContactSection extends GetView<ContactSectionController> {
       children: [
         SectionTitle(title: 'Contact Me', subtitle: 'Get In Touch'),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(flex: 5, child: ContactInfo()),
             const SizedBox(width: 40),

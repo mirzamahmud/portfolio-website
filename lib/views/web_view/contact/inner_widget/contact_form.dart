@@ -3,7 +3,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_website/constants/extensions/app_spacing_extension.dart';
 import 'package:portfolio_website/utils/color/app_colors.dart';
-import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/contact/controller/contact_section_controller.dart';
 import 'package:portfolio_website/widgets/button/custom_elevated_button.dart';
 import 'package:portfolio_website/widgets/button/custom_loading_button.dart';
@@ -36,7 +35,9 @@ class ContactForm extends StatelessWidget {
           children: [
             Text(
                   "Send Me a Message",
-                  style: AppTextStyle.titleLarge.copyWith(color: WHITE_COLOR),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(color: SECONDARY_COLOR),
                 )
                 .animate()
                 .fadeIn(duration: 600.ms, delay: 100.ms)
