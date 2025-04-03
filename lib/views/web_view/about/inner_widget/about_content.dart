@@ -13,9 +13,12 @@ class AboutContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Who am I?",
-          style: AppTextStyle.headlineSmall.copyWith(color: GREY_COLOR),
-        ).animate().fadeIn(duration: 600.ms, delay: 100.ms).slideY(begin: 0.2, end: 0),
+              "Who am I?",
+              style: AppTextStyle.headlineSmall.copyWith(color: GREY_COLOR),
+            )
+            .animate()
+            .fadeIn(duration: 600.ms, delay: 100.ms)
+            .slideY(begin: 0.2, end: 0),
         const SizedBox(height: 16),
         Container(
           padding: const EdgeInsets.all(20),
@@ -29,32 +32,69 @@ class AboutContent extends StatelessWidget {
                 offset: const Offset(0, 5),
               ),
             ],
-            border: Border.all(
-              color: PRIMARY_COLOR.withValues(alpha: 0.2),
-            ),
+            border: Border.all(color: PRIMARY_COLOR.withValues(alpha: 0.2)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(text: "I'm Mirza Mahmud Hossan, a passionate Mobile Application Developer with ", style: AppTextStyle.bodyLarge.copyWith(color: WHITE_COLOR, height: 1.6, fontWeight: FontWeight.w400)),
-                    TextSpan(text: "3 years of professional experience ", style: AppTextStyle.bodyLarge.copyWith(color: SECONDARY_COLOR, height: 1.6, fontWeight: FontWeight.w600)),
-                    TextSpan(text: "specializing in Flutter development.", style: AppTextStyle.bodyLarge.copyWith(color: WHITE_COLOR, height: 1.6, fontWeight: FontWeight.w600)),
-                  ]
-                ),
-              ).animate().fadeIn(duration: 600.ms, delay: 200.ms).slideY(begin: 0.2, end: 0),
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              "I'm Mirza Mahmud Hossan, a passionate Mobile Application Developer with ",
+                          style: AppTextStyle.bodyLarge.copyWith(
+                            color: WHITE_COLOR,
+                            height: 1.6,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "3 years of professional experience ",
+                          style: AppTextStyle.bodyLarge.copyWith(
+                            color: SECONDARY_COLOR,
+                            height: 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        TextSpan(
+                          text: "specializing in Flutter development.",
+                          style: AppTextStyle.bodyLarge.copyWith(
+                            color: WHITE_COLOR,
+                            height: 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                  .animate()
+                  .fadeIn(duration: 600.ms, delay: 200.ms)
+                  .slideY(begin: 0.2, end: 0),
               const SizedBox(height: 16),
               Text(
-                "I focus on creating intuitive, responsive, and visually appealing mobile applications that provide exceptional user experiences. My expertise includes developing cross-platform applications using Flutter, implementing complex UI designs, integrating RESTful APIs, and optimizing app performance.",
-                style: AppTextStyle.bodyLarge.copyWith(color: WHITE_COLOR, height: 1.6, fontWeight: FontWeight.w400),
-              ).animate().fadeIn(duration: 600.ms, delay: 300.ms).slideY(begin: 0.2, end: 0),
+                    "I focus on creating intuitive, responsive, and visually appealing mobile applications that provide exceptional user experiences. My expertise includes developing cross-platform applications using Flutter, implementing complex UI designs, integrating RESTful APIs, and optimizing app performance.",
+                    style: AppTextStyle.bodyLarge.copyWith(
+                      color: WHITE_COLOR,
+                      height: 1.6,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+                  .animate()
+                  .fadeIn(duration: 600.ms, delay: 300.ms)
+                  .slideY(begin: 0.2, end: 0),
               const SizedBox(height: 16),
               Text(
-                "I'm constantly learning and staying updated with the latest technologies and best practices in mobile development to deliver high-quality solutions that meet client requirements and exceed user expectations.",
-                style: AppTextStyle.bodyLarge.copyWith(color: WHITE_COLOR, height: 1.6, fontWeight: FontWeight.w400),
-              ).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideY(begin: 0.2, end: 0),
+                    "I'm constantly learning and staying updated with the latest technologies and best practices in mobile development to deliver high-quality solutions that meet client requirements and exceed user expectations.",
+                    style: AppTextStyle.bodyLarge.copyWith(
+                      color: WHITE_COLOR,
+                      height: 1.6,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+                  .animate()
+                  .fadeIn(duration: 600.ms, delay: 400.ms)
+                  .slideY(begin: 0.2, end: 0),
             ],
           ),
         ),
@@ -63,10 +103,22 @@ class AboutContent extends StatelessWidget {
           spacing: 20,
           runSpacing: 20,
           children: [
-            AboutInfoItem(label: 'Name', value:  'Mirza Mahmud Hossan', delay:  100),
-            AboutInfoItem(label: 'Email', value:  'contact@example.com', delay:  200),
-            AboutInfoItem(label: 'Location', value:  'Bangladesh', delay:  300),
-            AboutInfoItem(label: 'Availability', value:  'Available for remote work', delay:  400),
+            AboutInfoItem(
+              label: 'Name',
+              value: 'Mirza Mahmud Hossan',
+              delay: 100,
+            ),
+            AboutInfoItem(
+              label: 'Email',
+              value: 'mirza.dev25@gmail.com',
+              delay: 200,
+            ),
+            AboutInfoItem(label: 'Location', value: 'Bangladesh', delay: 300),
+            AboutInfoItem(
+              label: 'Availability',
+              value: 'Available for remote work',
+              delay: 400,
+            ),
           ],
         ),
       ],
