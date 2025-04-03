@@ -73,5 +73,12 @@ class AppTheme {
         textStyle: AppTextStyle.bodyMedium,
       ),
     ),
+    popupMenuTheme: PopupMenuThemeData(
+      color: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+        side: BorderSide(color: PRIMARY_COLOR, width: 1),
+      ),
+    ),
   );
 }
