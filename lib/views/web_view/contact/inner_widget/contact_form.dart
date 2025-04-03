@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:get/get.dart';
 import 'package:portfolio_website/constants/extensions/app_spacing_extension.dart';
 import 'package:portfolio_website/utils/color/app_colors.dart';
 import 'package:portfolio_website/utils/style/app_text_style.dart';
 import 'package:portfolio_website/views/web_view/contact/controller/contact_section_controller.dart';
 import 'package:portfolio_website/widgets/button/custom_elevated_button.dart';
+import 'package:portfolio_website/widgets/button/custom_loading_button.dart';
 import 'package:portfolio_website/widgets/text_field/custom_text_field.dart';
 
 class ContactForm extends StatelessWidget {
@@ -91,13 +93,21 @@ class ContactForm extends StatelessWidget {
               delay: 500,
             ),
             20.verticalSpace,
-            CustomElevatedButton(
-                  onPressed: () => controller.submitForm(),
-                  title: 'Submit',
-                )
-                .animate()
-                .fadeIn(duration: 600.ms, delay: 600.ms)
-                .scale(begin: const Offset(0.9, 0.9), end: const Offset(1, 1)),
+            Obx(
+              () =>
+                  controller.isSubmit.value
+                      ? CustomLoadingButton()
+                      : CustomElevatedButton(
+                            onPressed: () => controller.submitForm(),
+                            title: 'Submit',
+                          )
+                          .animate()
+                          .fadeIn(duration: 600.ms, delay: 600.ms)
+                          .scale(
+                            begin: const Offset(0.9, 0.9),
+                            end: const Offset(1, 1),
+                          ),
+            ),
           ],
         ),
       ),
