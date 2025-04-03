@@ -1,11 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+import 'package:portfolio_website/models/contact/contact_model.dart';
+import 'package:portfolio_website/service/firebase_service.dart';
 
 class ContactSectionController extends GetxController {
-  // =============================== text field variables ================================
+  // =============================== firebase service ====================================
+  late FirebaseService _firebaseService;
 
+  // =============================== text field variables ================================
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
@@ -20,25 +22,22 @@ class ContactSectionController extends GetxController {
 
   Future<void> submitForm() async {
     isSubmit.value = true;
-    String username = 'mirza.dev25@gmail.com';
-    String password = 'vhhq gwng lhvu leye'; // Use the App Password
-
-    final smtpServer = gmail(username, password);
-
-    final messageToSend =
-        Message()
-          ..from = Address(username, 'Mirza Mahmud Hossan')
-          ..recipients.add(username) // Receiver Email
-          ..subject = subjectController.text.trim()
-          ..text =
-              "Dear Mirza Mahmud,\nI hope you are well.\n\nFrom: ${nameController.text.trim()}\nEmail: ${emailController.text.trim()}\n\n${messageController.text.trim()}";
 
     try {
+      await _firebaseService.addContacts(
+        collectionPath: 'contacts',
+        contact: ContactModel(
+          name: nameController.text.trim(),
+          email: emailController.text.trim(),
+          subject: subjectController.text.trim(),
+          message: messageController.text.trim(),
+        ),
+      );
       clearData();
-      await send(messageToSend, smtpServer);
     } catch (e) {
-      debugPrint('Error Sending Email: $e');
+      debugPrint('Error: $e');
     }
+
     isSubmit.value = false;
   }
 
@@ -47,6 +46,12 @@ class ContactSectionController extends GetxController {
     emailController.clear();
     subjectController.clear();
     messageController.clear();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _firebaseService = FirebaseService();
   }
 
   @override
